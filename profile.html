@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="profileApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranav Mahajan | Full Stack Developer</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .section {
+      padding: 20px;
+      background: white;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #003366;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li::before {
+      content: "\2022 ";
+      color: #003366;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+    }
+  </style>
+</head>
+<body ng-controller="ProfileController">
+
+  <header>
+    <h1>{{ profile.name }}</h1>
+    <p>{{ profile.title }}</p>
+    <p>{{ profile.contact }}</p>
+  </header>
+
+  <div class="section">
+    <h2>About Me</h2>
+    <p>{{ profile.about }}</p>
+  </div>
+
+  <div class="section">
+    <h2>Skills</h2>
+    <ul>
+      <li ng-repeat="skill in profile.skills">{{ skill }}</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Projects</h2>
+    <ul>
+      <li ng-repeat="project in profile.projects">
+        <strong>{{ project.name }}</strong> - {{ project.description }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Certificates</h2>
+    <ul>
+      <li ng-repeat="cert in profile.certificates">{{ cert }}</li>
+    </ul>
+  </div>
+
+<script>
+  angular.module('profileApp', []).controller('ProfileController', function($scope) {
+    $scope.profile = {
+      name: 'Pranav Mahajan',
+      title: 'Full Stack Java Developer | Spring Boot, Angular, REST APIs, MySQL',
+      contact: '+91 8329401951 | pranavmahajan510@gmail.com | linkedin.com/Pranav',
+      about: 'A dedicated and detail-focused Software Engineer skilled in Java, Spring Boot, MySQL, and RESTful APIs. Passionate about building scalable backend systems.',
+      skills: [
+        'Java', 'Spring Boot', 'Spring MVC', 'Angular', 'REST APIs',
+        'MySQL', 'MongoDB', 'Git', 'Postman', 'Maven', 'Docker', 'HTML', 'CSS', 'JavaScript'
+      ],
+      projects: [
+        { name: 'Smart Contact Manager', description: 'Full-stack app with Spring Boot & MySQL for managing contacts securely.' },
+        { name: 'Book CRUD Website', description: 'CRUD operations on books using Spring Boot and MySQL.' }
+      ],
+      certificates: [
+        'FULL STACK JAVA DEVELOPER - Udemy - Dec 2024',
+        'Programming In Java - NPTEL - Jan to Apr 2024'
+      ]
+    };
+  });
+</script>
+</body>
+</html>
